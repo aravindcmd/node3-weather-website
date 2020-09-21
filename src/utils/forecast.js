@@ -13,7 +13,9 @@ const forecast = ((latitude,longitude,callback)=>{
             console.log('unable to find the location pls try again')
         }
         else{
-            callback(undefined,body.current.weather_descriptions[0]+' temperature currently is '+body.current.temperature+'C however it feels like its '+body.current.feelslike+'C')
+            callback(undefined,body.current.weather_descriptions[0]+' temperature currently is '+body.current.temperature+'C however it feels like its '+body.current.feelslike+'C Current Date and Time ' +body.location.localtime)
+            
+        
                 
                 
                 // weather_desc : response.body.current.weather_descriptions[0],
