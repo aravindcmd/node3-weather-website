@@ -3,18 +3,19 @@ const request = require('request')
 
 const forecast = ((latitude,longitude,callback)=>{
     const url ='http://api.weatherstack.com/current?access_key=dff5e6f279a67deaa92e84a4fe62a1dc&query='+longitude+','+latitude+'&units=m'
-    request({url,json: true},(error,{body})=>{
+    request({url,json: true},(error,response)=>{
         if(error){
             console.log('unable to connect to the weather services ')
 
         }
-        else if(body.error)
+        else if(response.body.error)
         {
             console.log('unable to find the location pls try again')
         }
         else{
-            callback(undefined,body.current.weather_descriptions[0]+' temperature currently is '+body.current.temperature+'C however it feels like its '+body.current.feelslike+'C Current Date and Time ' +body.location.localtime)
-            
+            const{weather_descriptions,temperature,feelslike,current,location,localtime}=response.body
+            callback(undefined,current.weather_descriptions[0]+','+current.temperature+','+current.feelslike+','+location.localtime)
+                
         
                 
                 
@@ -29,4 +30,8 @@ const forecast = ((latitude,longitude,callback)=>{
     })
 })
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 module.exports = forecast
+

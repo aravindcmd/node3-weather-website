@@ -4,6 +4,7 @@ const viewsPath = path.join(__dirname,'../templates/views')
 const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
+
 const app = express()
 const port = process.env.PORT || 3000
 const partialsPath = path.join(__dirname,'../templates/partials')
@@ -21,7 +22,7 @@ app.use(express.static(PublicDirectoryPath))
 
 app.get('',(req,res)=>{
     res.render('index',{
-        title: 'Weather App',
+        title: 'Weather Ninja',
         name: 'Aravind'
     })
 })
@@ -60,8 +61,10 @@ app.get('/weather',(req,res)=>{
                 forecast: forecastData,
                 location,
                 address: req.query.address
+                
             })
         })
+
 
     })
 

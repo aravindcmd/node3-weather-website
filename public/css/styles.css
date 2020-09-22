@@ -43,6 +43,15 @@ header a{
     width: 150px;
     
 }
+.dog{
+    width: 240px;
+    
+}
+.ninja{
+    width: 150px;
+    /* margin-left: auto;
+    margin-bottom: auto; */
+}
 
 input{
     border: 1px solid #cccccc;
@@ -55,4 +64,9 @@ button{
     background: #888888;
     color: white;
     padding: 8px;
+}
+
+#message-5{
+    font-size: 2em;
+    font-weight: 700;
 }
